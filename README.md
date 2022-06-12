@@ -15,7 +15,9 @@ You can find same info in **Readme.md**
 1. to provide path with spaces you need to use backslashes before spaces.
     1.1. for example: `add new\ file` or `cp new\ file new\ dir\new \file`
     1.2. so backslash without space after it means separation of the path, backslash with space after means that there is space in a filename
-2. for compression operation feel free to use any filename (except existed). for better usability provide `.br` extension to the end of destination (archive filename)
+    1.3. single quotes could be used to provide path with spaces. If command requires two paths as arguments, **BOTH** paths **MUST** be wrapped in single quotes.
+2. for compression operation feel free to use any filename (except existed). in no `.br` extension provided by user, it will be added automatically to the end of destination (archive filename)
+3. as it was specified in task `cp` and `mv` command accepts first argument as a path to file, and second argument as a path to directory. If there is file with same name in destination directory, `-copy` suffix will be added to basename of file copy.
 
 ## Basic Scope
 - General
