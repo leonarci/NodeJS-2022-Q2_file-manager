@@ -22,7 +22,7 @@ function parseCpusInfo() {
   const cpusBasicInfo = cpus();
   const cpusInfo = cpusBasicInfo.map(cpu => {
     const model = cpu.model.slice(0, cpu.model.indexOf(' @'));
-    const speed = cpu.speed > 1000 ? `${((Math.ceil(cpu.speed / 10) / 100).toFixed(2))} GHz` : `${cpu.speed / 10} GHz`;
+    const speed = cpu.speed > 100 ? `${((Math.ceil(cpu.speed / 10) / 100).toFixed(2))} GHz` : `${cpu.speed / 10} GHz`;
     const cpuInfo = {
       model,
       speed
