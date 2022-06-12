@@ -19,6 +19,8 @@ export const validateArgumenst = async (commandObject) => {
       return validateArgumenstLength(args, 2);
     case 'rm':
       return validateArgumenstLength(args, 1);
+    case 'hash':
+      return validateArgumenstLength(args, 1);
     case '.exit':
       return validateArgumenstLength(args, 0);
   }

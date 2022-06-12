@@ -8,6 +8,7 @@ import { rn } from '../file-operations/rn.js';
 import { cp } from '../file-operations/cp.js';
 import { mv } from '../file-operations/mv.js';
 import { rm } from '../file-operations/rm.js';
+import { hash } from '../hash/hash.js';
 import { getWorkingDirMessage } from './messages.js';
 
 export const processUserCommand = async (validCommandObject) => {
@@ -46,6 +47,9 @@ export const processUserCommand = async (validCommandObject) => {
       return commandResult;
     case 'rm':
       commandResult = await rm(args);
+      return commandResult;
+    case 'hash':
+      commandResult = await hash(args);
       return commandResult;
     case '.exit':
       rl.emit('close');
