@@ -1,6 +1,6 @@
 import getAbsolutePath from "../utils/path/getAbsolutePath.js";
 
-export function up() {
-  const newCwd = getAbsolutePath('..');
+export async function up() {
+  const newCwd = await getAbsolutePath('..');
   process.chdir(newCwd);
 }

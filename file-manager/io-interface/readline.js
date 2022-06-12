@@ -17,21 +17,21 @@ export const rl = createInterface({
 console.log(helloMessage);
 rl.prompt(true);
 
-rl.on('line', (line) => {
-  (async () => {
-    try {
-      const commandObject = await parseUserCommand(line);
-      const validCommandObject = await validateUserCommand(commandObject);
-      await processUserCommand(validCommandObject);
-      rl.prompt(true);
-    } catch (error) {
-      console.log(error.message);
-      rl.prompt(true);
-    }
-  })();
+rl.on('line', async (line) => {
+
+  try {
+    const commandObject = await parseUserCommand(line);
+    const validCommandObject = await validateUserCommand(commandObject);
+    const result = await processUserCommand(validCommandObject);
+    if (result !== undefined) console.log(result);
+    rl.prompt();
+  } catch (error) {
+    console.log(error.message);
+    rl.prompt(true);
+  }
 });
 
 rl.on('close', () => {
-  console.log(goodbyeMessage);
+  process.stdout.write(goodbyeMessage);
   process.exit(0);
 });

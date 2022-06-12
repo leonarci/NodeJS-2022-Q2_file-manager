@@ -2,14 +2,21 @@ import { rl } from './readline.js';
 import { up } from '../navigation/up.js';
 import { ls } from '../navigation/ls.js';
 import { cd } from '../navigation/cd.js';
+import { cat } from '../file-operations/cat.js';
+import { add } from '../file-operations/add.js';
+import { rn } from '../file-operations/rn.js';
+import { cp } from '../file-operations/cp.js';
+import { mv } from '../file-operations/mv.js';
+import { rm } from '../file-operations/rm.js';
 import { getWorkingDirMessage } from './messages.js';
 
 export const processUserCommand = async (validCommandObject) => {
   const { command, args } = validCommandObject;
   let promptMessage;
+  let commandResult;
   switch (command) {
     case 'up':
-      up();
+      await up();
       promptMessage = getWorkingDirMessage();
       rl.setPrompt(promptMessage);
       break;
@@ -22,6 +29,24 @@ export const processUserCommand = async (validCommandObject) => {
       promptMessage = getWorkingDirMessage();
       rl.setPrompt(promptMessage);
       break;
+    case 'cat':
+      await cat(args);
+      break;
+    case 'add':
+      commandResult = await add(args);
+      return commandResult;
+    case 'rn':
+      commandResult = await rn(args);
+      return commandResult;
+    case 'cp':
+      commandResult = await cp(args);
+      return commandResult;
+    case 'mv':
+      commandResult = await mv(args);
+      return commandResult;
+    case 'rm':
+      commandResult = await rm(args);
+      return commandResult;
     case '.exit':
       rl.emit('close');
   }

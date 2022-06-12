@@ -1,9 +1,11 @@
 import { isAbsolute, resolve } from 'path';
 
-export default function getAbsolutePath(path) {
+export default async function getAbsolutePath(path) {
   if (isAbsolute(path)) {
-    return path;
+    const resolvedPath = path;
+    return resolvedPath;
   } else {
-    return resolve(process.cwd(), path);
+    const resolvedPath = resolve(process.cwd(), path);
+    return resolvedPath;
   }
 }
