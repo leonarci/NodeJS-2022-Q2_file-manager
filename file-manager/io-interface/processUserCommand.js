@@ -9,6 +9,8 @@ import { cp } from '../file-operations/cp.js';
 import { mv } from '../file-operations/mv.js';
 import { rm } from '../file-operations/rm.js';
 import { hash } from '../hash/hash.js';
+import { compress } from '../compression/compress.js';
+import { decompress } from '../compression/decompress.js';
 import { getWorkingDirMessage } from './messages.js';
 
 export const processUserCommand = async (validCommandObject) => {
@@ -50,6 +52,12 @@ export const processUserCommand = async (validCommandObject) => {
       return commandResult;
     case 'hash':
       commandResult = await hash(args);
+      return commandResult;
+    case 'compress':
+      commandResult = await compress(args);
+      return commandResult;
+    case 'decompress':
+      commandResult = await decompress(args);
       return commandResult;
     case '.exit':
       rl.emit('close');

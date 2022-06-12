@@ -1,6 +1,6 @@
 import { validateArgumenst } from './validateArgumenst.js';
 
-const VALID_COMMANDS = ['cd', 'ls', 'up', '.exit', 'cat', 'add', 'rn', 'cp', 'mv', 'rm', 'hash'];
+const VALID_COMMANDS = ['cd', 'ls', 'up', '.exit', 'cat', 'add', 'rn', 'cp', 'mv', 'rm', 'hash', 'compress', 'decompress'];
 
 export const validateUserCommand = async (commandObject) => {
   if (VALID_COMMANDS.includes(commandObject.command)) {
