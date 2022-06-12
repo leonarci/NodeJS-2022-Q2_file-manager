@@ -9,7 +9,10 @@ export const compress = async (userInputPath) => {
   return new Promise(async (res, rej) => {
     try {
       console.log('wait for operation to proceed');
-      const [filePath, archivePath] = userInputPath;
+      let [filePath, archivePath] = userInputPath;
+      if (!archivePath.includes('.br')) {
+        archivePath = `${archivePath}.br`;
+      }
 
       const fileExist = await existFile(filePath);
       const archiveExist = await existFile(archivePath);
