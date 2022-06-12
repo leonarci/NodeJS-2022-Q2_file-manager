@@ -12,5 +12,5 @@ export const validateUserCommand = async (commandObject) => {
       throw new FileSystemError(`Invalid arguments: '${commandObject.args}'`);
     }
   }
-  throw new FileSystemError(`Invalid input: '${commandObject.command}'`);
+  throw new FileSystemError(`Invalid input: invalid command '${commandObject.command}'`);
 };

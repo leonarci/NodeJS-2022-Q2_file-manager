@@ -13,6 +13,7 @@ import { os } from '../os-info/os.js';
 import { compress } from '../compression/compress.js';
 import { decompress } from '../compression/decompress.js';
 import { getWorkingDirMessage } from './messages.js';
+import { EOL } from 'os';
 
 export const processUserCommand = async (validCommandObject) => {
   const { command, args } = validCommandObject;
@@ -35,6 +36,7 @@ export const processUserCommand = async (validCommandObject) => {
       break;
     case 'cat':
       await cat(args);
+      console.log(EOL);
       break;
     case 'add':
       commandResult = await add(args);
