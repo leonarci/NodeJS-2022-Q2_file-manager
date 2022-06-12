@@ -1,4 +1,5 @@
 import { validateArgumenst } from './validateArgumenst.js';
+import FileSystemError from '../errors/FileSystemError.js';
 
 const VALID_COMMANDS = ['cd', 'ls', 'up', '.exit', 'cat', 'add', 'rn', 'cp', 'mv', 'rm', 'hash', 'compress', 'decompress', 'os'];
 
@@ -8,8 +9,8 @@ export const validateUserCommand = async (commandObject) => {
     if (argumentsValid) {
       return commandObject;
     } else {
-      throw new Error(`Invalid arguments: '${commandObject.args}'`);
+      throw new FileSystemError(`Invalid arguments: '${commandObject.args}'`);
     }
   }
-  throw new Error(`Invalid input: '${commandObject.command}'`);
+  throw new FileSystemError(`Invalid input: '${commandObject.command}'`);
 };

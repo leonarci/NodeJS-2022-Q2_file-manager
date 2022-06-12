@@ -1,3 +1,5 @@
+import FileSystemError from '../errors/FileSystemError.js';
+
 export const validateArgumenst = async (commandObject) => {
   const { command, args } = commandObject;
   switch (command) {
@@ -44,6 +46,6 @@ function validateArgumenstLength(args, numberOfArguments) {
     } else if (numberOfArguments === 2) {
       errorMessage = 'Invalid input: entered command requires 2 arguments';
     }
-    throw new Error(errorMessage);
+    throw new FileSystemError(errorMessage);
   }
 }

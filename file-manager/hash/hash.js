@@ -1,5 +1,6 @@
 import createFsReadStream from '../utils/streams/createFsReadStream.js';
 import { createHash } from 'crypto';
+import FileSystemError from '../errors/FileSystemError.js';
 
 export const hash = async (userInputPath) => {
 
@@ -9,7 +10,7 @@ export const hash = async (userInputPath) => {
     rs.on('data', data => {
       hash.update(data);
     });
-    rs.on('error', () => rej(new Error('Operation failed')));
+    rs.on('error', () => rej(new FileSystemError('Operation failed')));
     rs.on('end', () => {
       res(hash.digest('hex'));
     });

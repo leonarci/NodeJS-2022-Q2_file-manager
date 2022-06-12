@@ -1,4 +1,5 @@
 import { EOL, arch, cpus, homedir, userInfo } from 'os';
+import FileSystemError from '../errors/FileSystemError.js';
 
 export const os = async (userArg) => {
   switch (userArg[0]) {
@@ -14,7 +15,7 @@ export const os = async (userArg) => {
     case '--architecture':
       return arch();
     default:
-      throw new Error('Invalid input: invalid argument');
+      throw new FileSystemError('Invalid input: invalid argument');
   }
 };
 

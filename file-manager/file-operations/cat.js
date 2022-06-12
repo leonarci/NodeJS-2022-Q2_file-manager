@@ -1,5 +1,6 @@
 import createFsReadStream from '../utils/streams/createFsReadStream.js';
 import getAbsolutePath from "../utils/path/getAbsolutePath.js";
+import FileSystemError from '../errors/FileSystemError.js';
 
 export const cat = async (userInputPath) => {
   try {
@@ -10,10 +11,13 @@ export const cat = async (userInputPath) => {
       rs.on('close', () => {
         res();
       });
-      rs.on('error', error => rej(error));
+      rs.on('error', () => {
+        const err = new FileSystemError(`Operation failed: invalid path`);
+        rej(err);
+      });
 
     });
   } catch (error) {
-    throw new Error(`Operation failed: invalid path`);
+    throw new FileSystemError(`Operation failed: invalid path`);
   }
 };
