@@ -9,6 +9,7 @@ import { cp } from '../file-operations/cp.js';
 import { mv } from '../file-operations/mv.js';
 import { rm } from '../file-operations/rm.js';
 import { hash } from '../hash/hash.js';
+import { os } from '../os-info/os.js';
 import { compress } from '../compression/compress.js';
 import { decompress } from '../compression/decompress.js';
 import { getWorkingDirMessage } from './messages.js';
@@ -59,6 +60,10 @@ export const processUserCommand = async (validCommandObject) => {
     case 'decompress':
       commandResult = await decompress(args);
       return commandResult;
+    case 'os':
+      commandResult = await os(args);
+      return commandResult;
+
     case '.exit':
       rl.emit('close');
   }
